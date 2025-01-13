@@ -1,0 +1,49 @@
+import java.util.*;
+
+public class chocolaproblem {
+    public static void main(String args[]){
+        Integer costver[]={2,1,3,1,4};
+        Integer costHor[]={4,1,2};
+
+        Arrays.sort(costver,Collections.reverseOrder());
+        Arrays.sort(costHor,Collections.reverseOrder());
+
+        int h=0;int v=0;  // pointers for horizontal and vertical cost
+        int hp=1;int vp=1; 
+        int cost=0;
+
+        while(h<costHor.length && v<costver.length){
+            if(costHor[h]>costver[v]){
+                cost+=(costHor[h]*vp);
+                hp++;
+                h++;
+            }
+
+            else{
+                cost+=(costver[v]*hp);
+                vp++;
+                v++;
+            }
+
+        }
+
+        while(h<costHor.length){
+            cost+=(costHor[h]*vp);
+                hp++;
+                h++;
+
+        }
+
+        while(v<costver.length){
+            cost+=(costver[v]*hp);
+                vp++;
+                v++;
+        }
+
+        System.out.println("minimum cost to cut chocolate= "+cost);
+
+
+
+    }
+    
+}
